@@ -1,0 +1,6 @@
+len("Hello")
+print(type("Hello"))
+print(type(len("Hello")))
+print(type(0.0001))
+print(type(12.1))
+print(type(True))
