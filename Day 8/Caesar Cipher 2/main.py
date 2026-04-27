@@ -5,22 +5,36 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 
-# TODO-1: Create a function called 'decrypt()' that takes 'original_text' and 'shift_amount' as inputs.
-# TODO-2: Inside the 'decrypt()' function, shift each letter of the 'original_text' *backwards* in the alphabet
-#  by the shift amount and print the decrypted text.
-# TODO-3: Combine the 'encrypt()' and 'decrypt()' functions into one function called 'caesar()'.
-#  Use the value of the user chosen 'direction' variable to determine which functionality to use.
-
 def encrypt(original_text, shift_amount):
-    cipher_text = ""
-    for letter in original_text:
-        shifted_position = alphabet.index(letter) + shift_amount
-        shifted_position %= len(alphabet)
-        cipher_text += alphabet[shifted_position]
-    print(f"Here is the encoded result: {cipher_text}")
 
+    final_message= ""
+    if direction == 'encode':
+        print("Encrypting...")
+    elif direction == 'decode':
+        print("Decrypting...")
+    else:
+        print("Invalid input")
 
-encrypt(original_text=text, shift_amount=shift)
+    for t in original_text:
+        if t == " ":
+            final_message += t
+        for a in alphabet:
+            if t == a:
+                if direction == 'encode':
+                    shifting_position = alphabet.index(t) + shift_amount
+                    shifting_position %= len(alphabet)
+                    shifting = alphabet[shifting_position]
+                    final_message += shifting
+                else:
+                    unshifting_position = alphabet.index(t) - shift_amount
+                    unshifting_position %= len(alphabet)
+                    unshifting = alphabet[unshifting_position]
+                    final_message += unshifting
+            else:
+                continue
+            #shifting = alphabet[len(alphabet) - shift_amount:]
+            #print("Decoded message :")
+    print("Encoded message : " + final_message) if direction=="encode" else print("Decoded message : " + final_message)
+    #print("Decoded message : " + decoded_message)
 
-
-
+encrypt(text, shift)
