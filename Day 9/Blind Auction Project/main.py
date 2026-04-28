@@ -2,6 +2,9 @@
 # TODO-2: Save data into dictionary {name: price}
 dictionary_bid= {}
 should_continue = True
+import art
+
+print(art.logo)
 
 def get_winner(dictionary):
     highest_bid = 0
@@ -11,6 +14,7 @@ def get_winner(dictionary):
         if highest_bid < int(bid_amount):
             highest_bid = int(bid_amount)
             winner = bidder
+    #print("Using max:" + max(dictionary, key = dictionary.get))
     print("The winner is "+ winner + " with a bid of " + str(highest_bid))
 
 # TODO-3: Whether if new bids need to be added
