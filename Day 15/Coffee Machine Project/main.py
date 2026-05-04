@@ -47,6 +47,7 @@ def are_there_enough_resources(ingredients):
     return True
 
 def get_report():
+    """Print report"""
     print(f"Water: {resources['water']}ml")
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}g")
@@ -80,6 +81,7 @@ def is_payment_complete(total_payed, beverage_price):
         return None
 
 def select_your_options():
+    """Selects an option. Options: 'off' to turn off the machine, 'report' to print a report, and 'espresso/latte/cappuccino'."""
     beverage_choice = input("What would you like? (espresso/latte/cappuccino)").lower()
     drink = MENU[beverage_choice]
     if beverage_choice == "off":
@@ -99,12 +101,14 @@ def deduct_resources(drink_ingredients):
         resources[ingredient] -= drink_ingredients[ingredient]
 
 def prepare_coffee(drink, drink_ingredients):
+    """Prepares the coffee and calls the deduct_resources function"""
     print("Preparing your coffee... ")
     deduct_resources(drink_ingredients)
     print(f"Here is your {drink} ☕")
     print(art.coffee)
 
 def order_a_coffee():
+    """Allows the user to order a coffee, chose how to pay. If the coffee resources are not enough allows the user to repeat the process."""
     turn_off = False
     while not turn_off:
         print_intro()
